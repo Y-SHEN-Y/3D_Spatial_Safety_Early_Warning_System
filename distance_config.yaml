@@ -1,0 +1,6 @@
+# 三维最近距离阈值，单位米；等于阈值时也按 WARNING 处理。
+safety_distance_m: 1.5
+
+# 以下参数只影响画面显示；mode1 显示所有被检测物与危险物的组合。
+marker_radius_pixels: 6    # 最近点在图像上的圆点半径
+line_thickness: 2          # 最近点连线的粗细

@@ -1,0 +1,51 @@
+# Python 缓存、测试结果和本地虚拟环境
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# 编辑器与本机私有配置
+.vscode/
+.idea/
+*.swp
+*.swo
+.env
+.env.*
+!.env.example
+/.aws/
+/.codex/
+/.agents/
+
+# 运行输出与录制文件
+/MvSdkLog/
+/runs/
+*.log
+/segmentation_result.jpg
+/depth_projection.npy
+*.bag
+*.db3
+*.mcap
+*.pcap
+
+# ROS 2 构建、安装和运行日志；保留 ros2_ws/src 源码
+/ros2_ws/build/
+/ros2_ws/install/
+/ros2_ws/log/
+
+# 本机 SDK、样例和训练数据；运行所需 SDK 请单独安装
+/vendor/
+/camera/
+/dataset/
+
+# 保留默认 COCO 分割权重，忽略其他实验权重和源码压缩包
+/weights/*
+!/weights/yolo26n-seg.pt
+/yolo26-source-*.zip

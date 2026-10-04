@@ -1,0 +1,30 @@
+camera_name: [right]
+
+id: 'DA7447468'
+
+param:
+  Width: 1440 # 1280
+  Height: 1080 # 640
+  max_depth: 30
+  OffsetY: 0 # 384
+  ExposureTime: 18000.0 # 64000. .100000. 33000室内 # 增益呢23
+  GammaEnable: False # True False4
+  Gamma: 0.7 # 0 0.7
+  Gain: 7.0 #
+  BalanceWhiteAuto: 'Off'
+  BalanceRatioR: 1400
+  BalanceRatioG: 800
+  BalanceRatioB: 1523
+  show_width: 640
+  show_height: 512
+  pyr_times: 2 # 金字塔层数
+
+calib:  
+  intrinsic_r: [[1754.454685, 0.0, 702.729139],
+                [0.0, 1753.905803, 580.567232],
+                [0.0, 0.0, 1.0]]
+  distortion_r: [-0.062485, 0.091974, 0.000197, 0.000191, 0.0]
+  extrinsic_to_lidar_R_r: [[ 0.97139213, -0.05517251,  0.23098339],
+                           [-0.23410994, -0.0591674,   0.97040804],
+                           [-0.03987316, -0.99672223, -0.07039118]]
+  extrinsic_to_lidar_T_r: [0.09903012, -0.0016134, 0.03171311]

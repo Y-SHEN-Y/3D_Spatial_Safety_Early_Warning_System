@@ -1,0 +1,38 @@
+# YOLO26 实例分割检测配置
+
+# 模型权重路径（相对于本配置文件所在目录，也可填绝对路径）
+weights: "weights/yolo26n-seg.pt"
+# UI 类别下拉框从该 YAML 的 names/labels 列表读取；路径相对于本配置文件。
+label_file: "yolo26/ultralytics/cfg/datasets/coco.yaml"
+
+# 当前帧测距轮廓的最低置信度；低于此值时 mask 为空，仅可能保留显示轮廓
+confidence: 0.3
+
+# 喂给追踪器的置信度阈值（0~1）：建议设低，让 ByteTrack 的两阶段匹配正常工作
+track_conf: 0.15
+
+# 多目标追踪器（YOLO 内置）
+tracker: "/home/shenby/桌面/3D_alert/Bytetrack.yaml"
+
+# 按 track_id 管理目标生命周期；与 ByteTrack 的 track_buffer 分开
+lifecycle:
+  min_confirmed_frames: 3  # 连续可靠检测多少帧后才显示新目标
+  start_confidence: 0.35    # 新目标确认时要求的最低置信度
+  hold_confidence: 0.16     # 已确认目标续接时允许的最低置信度，须不低于 track_conf
+  max_hold_frames: 10        # 轮廓失效或目标暂失后，仅在画面保留多少帧
+
+# 当前 mask 的质量检查与显示轮廓的时间平滑
+mask_quality:
+  min_area_pixels: 32  # mask 最少像素数；太小的轮廓视为无效
+  min_mask_iou: 0.3     # 目标框对齐后，与上次有效 mask 的最低重叠率
+  min_area_ratio: 0.5  # 当前 mask 面积相对上次的最小比例
+  max_area_ratio: 2.0  # 当前 mask 面积相对上次的最大比例
+  temporal_window: 3   # 显示轮廓多数票窗口，须为正奇数；1 表示不平滑
+
+
+# 启动时默认选中的目标类别；每组可写多个，界面中也可实时添加或删除。
+targets:
+  monitored:   # 监视对象
+    - person
+  dangerous:   # 危险物
+    - laptop

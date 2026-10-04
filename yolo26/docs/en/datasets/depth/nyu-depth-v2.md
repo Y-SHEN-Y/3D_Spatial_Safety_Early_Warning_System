@@ -1,0 +1,116 @@
+---
+comments: true
+license:
+    name: CC-BY-NC-SA-3.0
+    url: https://creativecommons.org/licenses/by-nc-sa/3.0/
+description: Explore the NYU Depth V2 indoor benchmark for monocular depth estimation. Learn about its structure, usage, pretrained models, and role as the primary YOLO26-Depth evaluation benchmark.
+keywords: Ultralytics, YOLO, depth estimation, NYU Depth V2, indoor RGB-D, Kinect, monocular depth, Eigen split, depth benchmark
+---
+
+# NYU Depth V2 Depth Dataset
+
+[NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html) is the standard indoor benchmark for [monocular depth estimation](index.md). It consists of RGB-D video sequences of a wide variety of indoor scenes recorded with a Microsoft Kinect v1. It is the primary benchmark used to report YOLO26-Depth accuracy.
+
+Explore [NYU Depth V2 on Ultralytics Platform](https://platform.ultralytics.com/ultralytics/datasets/nyu-depth) to preview its RGB-depth pairs, inspect dataset statistics, and clone it for training.
+
+## Key Features
+
+- Captured with a Microsoft Kinect v1 RGB-D sensor.
+- Covers a wide variety of real **indoor** scenes (homes, offices, classrooms, and similar spaces).
+- Depth range up to approximately 10 m, typical of consumer indoor RGB-D capture.
+- Evaluation is performed on the standard Eigen test split of 654 images.
+- The primary benchmark for reporting monocular depth estimation accuracy.
+
+## Role in YOLO26-Depth
+
+NYU Depth V2 is the **primary zero-shot evaluation benchmark** for the YOLO26-Depth family, and the headline metrics on the depth task page are reported on it. The published YOLO26-Depth models are not trained on NYU; although the dataset includes a train split, it is left unused and only held-out test results are reported.
+
+Evaluation uses multi-scale and horizontal-flip test-time augmentation (TTA), followed by log-least-squares scale alignment between the predicted and ground-truth depth maps before metrics are computed.
+
+## Results
+
+The table below reports the `delta1` accuracy (fraction of pixels within a 1.25× threshold, higher is better) on the NYU Depth V2 Eigen test split by model size.
+
+| Model         | delta1 |
+| ------------- | ------ |
+| YOLO26n-depth | 0.882  |
+| YOLO26s-depth | 0.896  |
+| YOLO26m-depth | 0.921  |
+| YOLO26l-depth | 0.930  |
+| YOLO26x-depth | 0.933  |
+
+## Dataset YAML
+
+A YAML file is used to define the dataset configuration. It contains information about the dataset's paths, classes, and other relevant information.
+
+!!! example "ultralytics/cfg/datasets/nyu-depth.yaml"
+
+    ```yaml
+    --8<-- "ultralytics/cfg/datasets/nyu-depth.yaml"
+    ```
+
+## Usage
+
+To evaluate a YOLO26-Depth model on the NYU Depth V2 benchmark, you can use the following code snippets. For a comprehensive list of available arguments, refer to the model [Validation](../../modes/val.md) page.
+
+!!! example "Validation Example"
+
+    === "Python"
+
+        ```python
+        from ultralytics import YOLO
+
+        # Load a model
+        model = YOLO("yolo26x-depth.pt")  # load a pretrained depth model
+
+        # Evaluate on the NYU Depth V2 benchmark
+        results = model.val(data="nyu-depth.yaml")
+        ```
+
+    === "CLI"
+
+        ```bash
+        # Evaluate a pretrained *.pt model
+        yolo depth val data=nyu-depth.yaml model=yolo26x-depth.pt
+        ```
+
+## Pretrained Models
+
+The YOLO26 depth family is evaluated zero-shot on the NYU Depth V2 benchmark. These models auto-download on first use from the Ultralytics [v8.4.0 assets release](https://github.com/ultralytics/assets/releases/tag/v8.4.0), for example [YOLO26x-depth](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-depth), and span a range of sizes (yolo26n/s/m/l/x-depth) for different accuracy and resource requirements.
+
+## Citations and Acknowledgments
+
+If you use the NYU Depth V2 dataset in your research or development work, please cite the following paper:
+
+!!! quote ""
+
+    === "BibTeX"
+
+        ```bibtex
+        @inproceedings{silberman2012indoor,
+              title={Indoor Segmentation and Support Inference from RGBD Images},
+              author={Silberman, Nathan and Hoiem, Derek and Kohli, Pushmeet and Fergus, Rob},
+              booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+              year={2012}
+        }
+        ```
+
+We would like to acknowledge the authors for creating and maintaining this valuable resource for the computer vision community.
+
+## FAQ
+
+### Why is NYU Depth V2 the primary YOLO26-Depth benchmark?
+
+NYU Depth V2 is the standard indoor monocular depth benchmark, with Kinect v1 RGB-D captures of homes, offices, and classrooms up to roughly 10 m and a widely used 654-image Eigen test split. The headline YOLO26-Depth metrics on the [Depth Estimation task page](../../tasks/depth.md) are reported on it.
+
+### Are the YOLO26-Depth models trained on NYU Depth V2?
+
+No. The released models are evaluated zero-shot, so the NYU training split is left unused and only held-out test results are reported. The published numbers use multi-scale and flip test-time augmentation followed by log-least-squares scale alignment.
+
+### How do I validate a model on NYU Depth V2?
+
+Run `yolo depth val data=nyu-depth.yaml model=yolo26x-depth.pt`, or use the Python example in the [Usage](#usage) section. The built-in validator uses single-scale inference with median alignment, so its scores are lower than the TTA numbers in [Results](#results); see the [task page](../../tasks/depth.md#models) for the reproducible values.
+
+### Where can I browse NYU Depth V2 online?
+
+Explore [NYU Depth V2 on Ultralytics Platform](https://platform.ultralytics.com/ultralytics/datasets/nyu-depth) to preview RGB-depth pairs, inspect dataset statistics, and clone the dataset for cloud training.

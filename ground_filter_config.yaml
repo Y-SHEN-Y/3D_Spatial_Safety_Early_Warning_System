@@ -1,0 +1,16 @@
+# 所有距离均以米为单位，坐标系为雷达发布的 laser_link。
+enabled: true
+voxel_size: 0.10             # 减小体素可保留更多稀疏地面点，但拟合更费时
+distance_threshold: 0.08     # 点到地面平面不超过此距离时判为地面
+ransac_n: 3
+num_iterations: 300          # 增加抽样次数，降低偶发的地面拟合失败
+max_planes: 4                # 最大尝试平面数，避免最大平面恰好是墙面
+candidate_max_z: 0.0         # 仅用雷达下方的点寻找地面
+ground_z_min: -4.0           # 地面与雷达同一竖线的最低允许高度
+ground_z_max: -0.05          # 地面与雷达同一竖线的最高允许高度
+max_tilt_degrees: 15.0       # 地面法线与 laser_link 的 +Z 轴最大夹角
+min_candidate_points: 60
+min_plane_inliers: 50        # 在降采样候选点中的最少支持点
+min_plane_ratio: 0.05        # 支持点占降采样候选点的最小比例
+max_plane_hold_frames: 2     # 拟合失败时最多复用几帧旧平面；始终只过滤当前帧的点
+min_hold_ground_points: 10   # 旧平面在当前帧至少命中多少点，才允许兜底

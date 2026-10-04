@@ -1,0 +1,22 @@
+# 融合只使用最新一帧雷达点云和当前帧有效的检测轮廓。
+min_component_pixels: 64       # 小于此面积的附属 mask 岛会被删除
+min_component_ratio: 0.02      # 附属岛面积至少为主岛面积的这一比例
+mask_erosion_pixels: 0         # 边缘内缩像素数；标定误差较大时先保持 0
+
+# 三维分团：邻域半径随距离略微增大，适应远距离点云变稀疏。
+dbscan_eps_base_m: 0.12
+dbscan_eps_per_depth_m: 0.012
+dbscan_eps_max_m: 0.50
+dbscan_min_points: 3
+min_cluster_points: 3
+# 密集主体周围的稀疏点，只在三维间隔不超过此值时并入同一目标。
+# 调大可保留更多稀疏的突出部位，也更容易误收近处遮挡物。
+satellite_max_gap_m: 0.30
+
+# 首次关联时，第二大点团达到最大点团的此比例就视为有歧义。
+bootstrap_secondary_ratio: 0.15
+# 后续关联优先选择与同一 track_id 上次三维中心接近的点团。
+max_center_jump_m: 1.50
+min_center_margin_m: 0.15
+max_track_gap_frames: 10
+point_radius_pixels: 2
