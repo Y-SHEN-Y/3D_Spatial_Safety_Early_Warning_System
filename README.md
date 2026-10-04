@@ -28,15 +28,34 @@ flowchart LR
 
 ## 效果截图
 
-`mode1`：显示被监测目标与危险物的点云、最近距离和安全状态。
+## 本系统的测距特性：输出三维空间下目标间最近部位的距离
+
+![测距特性](image/截图 2026-10-04 21-00-33.png)
+
+
+
+## `mode1`：显示被监测目标与危险物的点云、最近距离和安全状态。
 
 ![mode1：全部目标对测距](image/mode1.png)
 
-`mode2`：未添加监测对时，只显示轮廓与 ID。
+
+
+## 添加下一个目标
+
+<div style="display: flex; justify-content: center; gap: 12px;">
+  <img src="image/add_target.png" alt="mode1：全部目标对测距" style="width: 40%; height: auto;" />
+  <img src="image/add_cup.png" alt="mode1：全部目标对测距" style="width: 50%; height: auto;" />
+</div>
+
+
+
+## `mode2`：未添加监测对时，只显示轮廓与 ID。
 
 ![mode2：尚未添加监测对](image/mode2.png)
 
-添加两组监测对后，界面只显示这两组的点云与距离。
+
+
+## 添加两组监测对后，界面只显示这两组的点云与距离。
 
 ![mode2：两组监测对](image/add_two_team.png)
 
