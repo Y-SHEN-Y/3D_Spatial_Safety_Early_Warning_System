@@ -151,4 +151,5 @@ python -m unittest test_converter test_detector_lifecycle test_fusion test_groun
 
 测距基于当前可见点云的最近采样点，不会推断被遮挡表面；当前实现使用最新雷达帧和当前相机帧，尚无硬件级时间同步。更换相机分辨率、相机/雷达安装姿态或雷达坐标系后，必须重新核对标定与地面参数。跟踪 ID 改变时，`mode2` 中按旧 ID 建立的监测对可能需要重新选择。
 
-准备公开仓库时，还应检查 `vendor/`、`camera/`、`dataset/`、`weights/` 与第三方驱动/源码的体积、来源和再分发条件，并为项目自身确定许可证。
+# 作者：BoYu shen
+# 邮箱：1072256744@qq.com
