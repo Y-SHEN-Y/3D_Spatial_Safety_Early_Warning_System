@@ -30,7 +30,7 @@ flowchart LR
 
 ## 本系统的测距特性：输出三维空间下目标间最近部位的距离
 
-![测距特性](image/截图 2026-10-04 21-00-33.png)
+![测距特性](image/diteal.png)
 
 
 
@@ -43,8 +43,8 @@ flowchart LR
 ## 添加下一个目标
 
 <div style="display: flex; justify-content: center; gap: 12px;">
-  <img src="image/add_target.png" alt="mode1：全部目标对测距" style="width: 40%; height: auto;" />
-  <img src="image/add_cup.png" alt="mode1：全部目标对测距" style="width: 50%; height: auto;" />
+  <img src="image/add_target.png" alt="mode1：全部目标对测距" style="width: 30%; height: auto;" />
+  <img src="image/add_cup.png" alt="mode1：全部目标对测距" style="width: 60%; height: auto;" />
 </div>
 
 
@@ -151,5 +151,6 @@ python -m unittest test_converter test_detector_lifecycle test_fusion test_groun
 
 测距基于当前可见点云的最近采样点，不会推断被遮挡表面；当前实现使用最新雷达帧和当前相机帧，尚无硬件级时间同步。更换相机分辨率、相机/雷达安装姿态或雷达坐标系后，必须重新核对标定与地面参数。跟踪 ID 改变时，`mode2` 中按旧 ID 建立的监测对可能需要重新选择。
 
-# 作者：BoYu shen
-# 邮箱：1072256744@qq.com
+
+### 作者：BoYu Shen
+### 邮箱：1072256744@qq.com
